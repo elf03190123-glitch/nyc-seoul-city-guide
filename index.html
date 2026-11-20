@@ -1039,10 +1039,8 @@ function card(i){const r=ROWS[i];const d=km(i);const here=d<0.005;const me=origi
       ${isExt(i)?"":`<a href="${nmapApp(i)}" target="_blank" rel="noopener">${t().nApp}</a>`}
       <a href="${detailUrl(i)}" target="_blank" rel="noopener">${detailLbl(i)}</a></div></div></article>`}
 const EARR="https://www.e-arrivalcard.go.kr/portal/apply/agreementPolicy.do?applyType=P&type=PC";
-function prepHtml(){return `<section class="prep"><div class="sec-head"><h2>${t().prepT}</h2><span>${t().prepSub}</span></div>
-  <div class="prepc"><div class="prepk">${t().earrK}</div><h3>${t().earrT}</h3><p>${t().earrP}</p>
-  <a class="btn" href="${EARR}" target="_blank" rel="noopener">${t().earrBtn}</a><p class="hint">${t().earrNote}</p></div>
-  <div class="prepc g"><div class="prepk">${t().pvK}</div><h3>${t().pvT}</h3><p>${t().pvP}</p>
+function prepHtml(){return `<section class="prep">
+  <div class="prepc g" style="margin-top:0"><div class="prepk">${t().pvK}</div><h3>${t().pvT}</h3><p>${t().pvP}</p>
   <a class="btn" href="https://claude.ai/artifact/4q7NER7U1k2J3xR1P7S896#slide-317819a756e5" target="_blank" rel="noopener">${t().pvBtn}</a></div></section>`}
 function render(){
   const list=document.getElementById("list");
@@ -1141,7 +1139,7 @@ function syncSeg(){
 function applyLang(){
   document.documentElement.lang=lang;
   document.querySelectorAll("[data-t]").forEach(el=>{const v=t()[el.dataset.t];if(typeof v==="string")el.innerHTML=v});
-  catSeg.innerHTML=[["all",t().all],["P",t().prepTab],...CATS.map(k=>[k,t().cat[k]])].map(([k,n])=>`<button type="button" id="cat-${k}" data-cat="${k}" aria-pressed="${k===cat}">${n}</button>`).join("");
+  catSeg.innerHTML=[["all",t().all],...CATS.map(k=>[k,t().cat[k]])].map(([k,n])=>`<button type="button" id="cat-${k}" data-cat="${k}" aria-pressed="${k===cat}">${n}</button>`).join("");
   document.getElementById("legend").innerHTML=CATS.map(k=>`<span style="--c:var(--c${k})">${t().cat[k]}</span>`).join("");
   document.querySelectorAll("#fsz button").forEach((x,k)=>{x.textContent=lang==="en"?"A":"가";x.title=(lang==="en"?["Text size: normal","Text size: large","Text size: extra large"]:["글자 크기: 보통","글자 크기: 크게","글자 크기: 아주 크게"])[k]});
   document.getElementById("fsz").setAttribute("aria-label",lang==="en"?"Text size":"글자 크기");
